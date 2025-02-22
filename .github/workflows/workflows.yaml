@@ -33,7 +33,7 @@ jobs:
           npm install
 
       - name: System prune
-        run: docker system prune -f && ls -R
+        run: docker system prune -f && ls -lah
 
       - name: Build Docker Image
         run: |
@@ -41,12 +41,12 @@ jobs:
             --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
             --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
             --build-arg AWS_REGION=ap-south-1 \
-            -t serverless-app ./Docker
+            -t serverless-app .
 
       - name: Run Docker Container
         run: |
           docker run --rm \
             -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
             -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
-            -e AWS_REGION=us-east-1 \
+            -e AWS_REGION=ap-south-1 \
             serverless-app
