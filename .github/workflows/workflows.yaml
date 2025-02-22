@@ -10,8 +10,24 @@ env:
   WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
 jobs:
+  Install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js dependencies
+        run: |
+          cd lambda
+          npm install
+
+      - name: Compress Lambda function
+        run: zip -r lambda.zip .
+        working-directory: lambda
+
   terraform:
     runs-on: ubuntu-latest
+    needs: install
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
