@@ -34,7 +34,7 @@ resource "aws_iam_policy_attachment" "lambda_basic_execution" {
 resource "aws_lambda_function" "weather-app" {
   function_name    = "servweather-app"
   filename        = "../lambda/lambda.zip"
-  source_code_hash = filebase64sha256("../lambda/lambda.zip")
+  source_code_hash = filebase64sha256("../lambda/Lambda.zip")
   role            = aws_iam_role.lambda_exec.arn
   handler         = "index.handler"
   runtime         = "nodejs14.x"
