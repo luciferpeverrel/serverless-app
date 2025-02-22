@@ -37,7 +37,7 @@ resource "aws_lambda_function" "weather-app" {
   source_code_hash = filebase64sha256("../lambda/Lambda.zip")
   role            = aws_iam_role.lambda_exec.arn
   handler         = "index.handler"
-  runtime         = "nodejs14.x"
+  runtime         = "nodejs22.x"
   environment {
     variables = {
       LOG_LEVEL = "info"
