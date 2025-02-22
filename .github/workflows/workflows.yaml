@@ -32,6 +32,9 @@ jobs:
           cd lambda
           npm install
 
+      - name: System prune
+        run: docker system prune -f
+
       - name: Build Docker Image
         run: |
           docker build \
