@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/abhigyansanyal/Documents/Git/serverless-weather-app/.github/workflows/workflows.yaml"
+    }
+}

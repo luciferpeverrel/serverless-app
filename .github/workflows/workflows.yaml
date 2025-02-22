@@ -1,0 +1,24 @@
+name: CI Pipeline
+on:
+  push:
+    branches:
+      - main
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Compress Lambda function
+        run: zip -r lambda/lambda.zip lambda/*
+      
+      - name: Build Docker image
+        run: docker build -t serverless-weather-app -f /Dockerfile .
+      
+      - name: Run Docker container
+        run: docker run serverless-weather-app
