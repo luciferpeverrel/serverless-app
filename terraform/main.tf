@@ -3,11 +3,11 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "weather" {
-  bucket = "weatherapp973468"
+  bucket = "serverless-app"
 }
 
 resource "aws_iam_role" "lambda_exec" {
-  name = "lambda-exec-role-973468"
+  name = "serverless-app-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -29,8 +29,8 @@ resource "aws_iam_policy_attachment" "lambda_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-resource "aws_lambda_function" "weather-app" {
-  function_name    = "serverless-weather-app"
+resource "aws_lambda_function" "serverless-app" {
+  function_name    = "serverless-app"
   filename        = "../lambda/Lambda.zip"
   source_code_hash = filebase64sha256("../lambda/Lambda.zip")
   role            = aws_iam_role.lambda_exec.arn
@@ -39,7 +39,7 @@ resource "aws_lambda_function" "weather-app" {
   environment {
     variables = {
       LOG_LEVEL = "info"
-      WEATHER_API_KEY = var.weather_api_key
+
     }
   }
 }
