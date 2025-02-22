@@ -18,7 +18,7 @@ jobs:
         run: zip -r lambda/lambda.zip lambda/*
       
       - name: Build Docker image
-        run: docker build -t serverless-weather-app -f /Dockerfile .
+        run: docker build -t serverless-weather-app -f Docker/Dockerfile .
       
       - name: Run Docker container
         run: docker run serverless-weather-app
