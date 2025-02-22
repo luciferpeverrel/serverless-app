@@ -2,8 +2,12 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_s3_bucket" "weather" {
-  bucket = "serverless-app"
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
+resource "aws_s3_bucket" "serverless" {
+  bucket = "serverless-app-${random_id.suffix.hex}"
 }
 
 resource "aws_iam_role" "lambda_exec" {
