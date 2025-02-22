@@ -32,17 +32,13 @@ jobs:
           cd lambda
           npm install
 
-      - name: Compress Lambda function
-        run: zip -r lambda.zip .
-        working-directory: lambda
-
       - name: Build Docker Image
         run: |
           docker build \
             --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
             --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
             --build-arg AWS_REGION=ap-south-1 \
-            -t serverless-app .
+            -t serverless-app ./Docker
 
       - name: Run Docker Container
         run: |

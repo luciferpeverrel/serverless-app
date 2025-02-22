@@ -14,8 +14,8 @@ AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 
 # S3 details
 BUCKET_NAME = "example-bucket"
-FILE_TO_UPLOAD = "sample.txt"  # Ensure this file exists in the container
-S3_OBJECT_NAME = "uploaded_sample.txt"
+FILE_TO_UPLOAD = "test_file.txt"  # Ensure this file exists in the container
+S3_OBJECT_NAME = "uploaded_file.txt"
 
 def upload_to_s3():
     if not AWS_ACCESS_KEY_ID or not AWS_SECRET_ACCESS_KEY:
