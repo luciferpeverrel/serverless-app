@@ -5,11 +5,11 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "weather" {
-  bucket = "weatherapp97346"
+  bucket = "weatherapp973468"
 }
 
 resource "aws_iam_role" "lambda_exec" {
-  name = "lambda-exec-role-97346"
+  name = "lambda-exec-role-973468"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
