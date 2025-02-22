@@ -13,7 +13,7 @@ AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 
 # S3 details
-BUCKET_NAME = "example-bucket"
+BUCKET_NAME = "serverless-app-f6d5d3f5"
 FILE_TO_UPLOAD = "test_file.txt"  # Ensure this file exists in the container
 S3_OBJECT_NAME = "uploaded_file.txt"
 
