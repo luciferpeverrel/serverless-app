@@ -47,7 +47,7 @@ def upload_file(bucket_name, file_name):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    bucket = os.getenv("AWS_S3_BUCKET", "example-bucket")
+    bucket = os.getenv("AWS_S3_BUCKET", "weatherapp973468")
     api_key = os.getenv("WEATHER_API_KEY")
 
     if not api_key:
