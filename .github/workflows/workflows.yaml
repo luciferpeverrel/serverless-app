@@ -19,6 +19,7 @@ jobs:
       
       - name: Build Docker image
         run: docker build -t serverless-weather-app -f Docker/Dockerfile .
+        working-directory: .
       
       - name: Run Docker container
         run: docker run serverless-weather-app
